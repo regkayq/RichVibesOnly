@@ -8,18 +8,19 @@
   --white:   #fafafa;
   --off-white: #f4f1ec;
   --dark:    #111111;
-  --green:   #1a3028;
-  --green-mid: #254736;
-  --green-light: #3a6b55;
-  --gold:    #c9a84c;
-  --gold-light: #e8c96d;
-  --gold-pale: #f5edd6;
+  --green:   #1F4C38;
+  --green-mid: #285E46;
+  --green-light: #3A7A5C;
+  --gold:    #E9DD5E;
+  --gold-light: #F0E87A;
+  --gold-pale: #FDFBE8;
+  --crimson: #A22E51;
   --text:    #1a1a1a;
   --muted:   #6b6b6b;
   --border:  rgba(0,0,0,0.08);
 
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-brand: 'Suranna', Georgia, serif;
+  --font-sans:  'Fira Sans', system-ui, sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -74,7 +75,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   margin: 0 auto 64px;
 }
 .section-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 300;
   line-height: 1.12;
@@ -113,7 +114,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .btn--gold:hover {
   background: var(--gold-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+  box-shadow: 0 8px 24px rgba(233,221,94,0.35);
 }
 .btn--outline {
   border: 1.5px solid rgba(255,255,255,0.35);
@@ -159,9 +160,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   gap: 40px;
 }
 .nav__logo {
-  font-family: var(--font-serif);
+  font-family: var(--font-brand);
   font-size: 1.35rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.02em;
   color: var(--white);
   flex-shrink: 0;
@@ -243,9 +244,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(58,107,85,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(31,76,56,0.6) 0%, transparent 60%),
     radial-gradient(ellipse 60% 80% at 80% 60%, rgba(10,10,10,0.6) 0%, transparent 60%),
-    linear-gradient(135deg, #1a3028 0%, #0f1f18 50%, #0a0a0a 100%);
+    linear-gradient(135deg, #1F4C38 0%, #0d2b1e 50%, #0a0a0a 100%);
 }
 /* subtle texture overlay */
 .hero__bg::after {
@@ -271,7 +272,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   margin-bottom: 24px;
 }
 .hero__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(2.8rem, 5.5vw, 5rem);
   font-weight: 300;
   line-height: 1.05;
@@ -421,7 +422,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-size: 0.72rem;
   font-weight: 600;
   color: #fff;
-  background: var(--green);
+  background: var(--crimson);
   padding: 2px 7px;
   border-radius: 100px;
 }
@@ -456,7 +457,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   50% { transform: translateY(-8px); }
 }
 .badge-num {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--gold);
@@ -554,7 +555,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   text-align: center;
 }
 .stat strong {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 2rem;
   font-weight: 600;
   color: var(--green);
@@ -604,10 +605,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .step__num {
   position: absolute;
   top: -16px; left: 40px;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 3.5rem;
   font-weight: 600;
-  color: rgba(26,48,40,0.08);
+  color: rgba(31,76,56,0.08);
   line-height: 1;
   pointer-events: none;
 }
@@ -623,7 +624,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   color: var(--gold);
 }
 .step h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--dark);
@@ -637,13 +638,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .step__connector {
   width: 60px;
   height: 1px;
-  background: linear-gradient(90deg, var(--gold) 0%, rgba(201,168,76,0.2) 100%);
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(233,221,94,0.2) 100%);
   flex-shrink: 0;
 }
 @media (max-width: 900px) {
   .steps { flex-direction: column; gap: 12px; }
   .step { max-width: 100%; }
-  .step__connector { width: 1px; height: 40px; background: linear-gradient(180deg, var(--gold) 0%, rgba(201,168,76,0.2) 100%); }
+  .step__connector { width: 1px; height: 40px; background: linear-gradient(180deg, var(--gold) 0%, rgba(233,221,94,0.2) 100%); }
 }
 
 /* ============================================================
@@ -713,14 +714,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  border: 1px solid rgba(201,168,76,0.5);
+  border: 1px solid rgba(233,221,94,0.5);
   padding: 4px 12px;
   border-radius: 100px;
   margin-bottom: 10px;
   width: fit-content;
 }
 .cat-content h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.8rem;
   font-weight: 300;
   color: var(--white);
@@ -779,7 +780,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   animation: marquee 30s linear infinite;
 }
 .marquee-inner span {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.3rem;
   font-weight: 300;
   color: rgba(255,255,255,0.6);
@@ -833,7 +834,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .review-card--featured .review-stars { color: var(--gold-light); }
 blockquote {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.15rem;
   font-style: italic;
   font-weight: 300;
@@ -896,7 +897,7 @@ blockquote {
   width: 600px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(233,221,94,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 .waitlist__inner {
@@ -906,7 +907,7 @@ blockquote {
   text-align: center;
 }
 .waitlist__inner h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 300;
   line-height: 1.1;
@@ -969,9 +970,9 @@ blockquote {
 }
 .footer__logo {
   display: block;
-  font-family: var(--font-serif);
+  font-family: var(--font-brand);
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--white);
   margin-bottom: 16px;
 }
@@ -999,7 +1000,7 @@ blockquote {
 .footer__socials a:hover {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(201,168,76,0.08);
+  background: rgba(233,221,94,0.08);
 }
 .footer__links {
   display: grid;
@@ -1081,7 +1082,7 @@ blockquote {
   justify-content: center;
   padding: 16px 28px;
   background: var(--green);
-  color: var(--white);
+  color: var(--gold);
   border-radius: var(--radius-xl);
   font-size: 0.9rem;
   font-weight: 500;
