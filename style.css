@@ -365,23 +365,41 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background-size: cover;
   background-position: center;
 }
+/* Lumora Summer Jacket — warm cream/sand outdoor */
 .showcase-img--1 {
-  background: linear-gradient(135deg, #c8b89a 0%, #a08060 50%, #7a5c3a 100%);
+  background: linear-gradient(160deg, #f2ece0 0%, #d9c9a8 45%, #b8a07a 100%);
 }
 .showcase-img--1::after {
-  content: '🟤';
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  content: '';
+  display: block;
   height: 100%;
-  font-size: 4rem;
-  background: linear-gradient(135deg, #c9a96e20, #8b6914 40%, #5c3d0c);
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 30%, rgba(255,255,255,0.35) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(242,236,224,0.2) 0%, rgba(184,160,122,0.4) 100%);
 }
+/* Vessa Satin Flow Dress — warm amber/caramel */
 .showcase-img--2 {
-  background: linear-gradient(135deg, #2c3e50, #3d5a73, #1a2535);
+  background: linear-gradient(160deg, #c8935a 0%, #9b6030 45%, #5a3010 100%);
 }
+.showcase-img--2::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background:
+    radial-gradient(ellipse 50% 70% at 40% 20%, rgba(233,200,140,0.4) 0%, transparent 55%),
+    linear-gradient(180deg, transparent 40%, rgba(30,15,5,0.35) 100%);
+}
+/* Noire Club Midnight Curve Dress — deep dark with bronze sheen */
 .showcase-img--3 {
-  background: linear-gradient(135deg, #f0ede8, #d4cfc8, #b8b0a6);
+  background: linear-gradient(160deg, #2a1f1a 0%, #1a120e 50%, #0d0906 100%);
+}
+.showcase-img--3::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background:
+    radial-gradient(ellipse 55% 60% at 55% 35%, rgba(185,130,70,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 20% 70%, rgba(162,46,81,0.15) 0%, transparent 50%);
 }
 .showcase-info {
   padding: 14px 16px;
@@ -676,14 +694,17 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background-position: center;
   transition: transform 0.6s var(--ease-out);
 }
-.cat-bg--women {
-  background: linear-gradient(160deg, #c8a882 0%, #8b6040 40%, #3a2010 100%);
+/* Old Money — ivory/cream/warm sand (LUMORA jacket, Ivory Blazer vibes) */
+.cat-bg--oldmoney {
+  background: linear-gradient(160deg, #ede5d8 0%, #c8b490 40%, #8a6e48 100%);
 }
-.cat-bg--men {
-  background: linear-gradient(160deg, #2c3e50 0%, #1a2535 50%, #0f1520 100%);
+/* Soft Luxe — dusty mauve/blush (VESSA satin, MAELLE drape vibes) */
+.cat-bg--softluxe {
+  background: linear-gradient(160deg, #d4b8b0 0%, #a87868 50%, #6a3c30 100%);
 }
-.cat-bg--access {
-  background: linear-gradient(160deg, #d4af70 0%, #b8860b 50%, #6b4c00 100%);
+/* After Hours — deep dark with bronze/crimson (NOIRE CLUB vibes) */
+.cat-bg--afterhours {
+  background: linear-gradient(160deg, #2a1818 0%, #4a2020 40%, #1a0c0c 100%);
 }
 /* Pattern overlays for visual interest */
 .cat-bg--women::before,
