@@ -184,6 +184,16 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .nav__links a:hover,
 .nav.scrolled .nav__links a:hover { color: var(--gold); }
 .nav__cta { flex-shrink: 0; }
+/* Before scrolling the nav sits on the dark hero — make CTA visible */
+.nav:not(.scrolled) .nav__cta {
+  border-color: rgba(255,255,255,0.4);
+  color: var(--white);
+}
+.nav:not(.scrolled) .nav__cta:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(233,221,94,0.08);
+}
 .nav__burger {
   display: none;
   flex-direction: column;
