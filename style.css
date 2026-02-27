@@ -161,7 +161,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav__logo {
   font-family: var(--font-brand);
-  font-size: 1.75rem;
+  font-size: 2.2rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: var(--white);
@@ -248,15 +248,15 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   grid-template-columns: 1fr 1fr;
   align-items: center;
   overflow: hidden;
-  background: var(--black);
+  background: #091409;
 }
 .hero__bg {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(233,221,94,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(162,46,81,0.08) 0%, transparent 60%),
-    linear-gradient(135deg, #1a1a1a 0%, #111111 50%, #0a0a0a 100%);
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(233,221,94,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(162,46,81,0.06) 0%, transparent 60%),
+    linear-gradient(135deg, #0f1f16 0%, #091409 50%, #060e05 100%);
 }
 /* subtle texture overlay */
 .hero__bg::after {
@@ -281,24 +281,33 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   color: var(--gold);
   margin-bottom: 24px;
 }
-.hero__title {
-  font-family: var(--font-sans);
-  font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+.hero__brand {
+  font-family: var(--font-brand);
+  font-size: clamp(3.6rem, 7vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.02em;
   color: var(--white);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-.hero__title em {
+.hero__tagline {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 20px;
+}
+.hero__tagline em {
   font-style: italic;
   color: var(--gold);
 }
 .hero__sub {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.62);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
   line-height: 1.7;
-  max-width: 420px;
+  max-width: 400px;
   margin-bottom: 40px;
 }
 .hero__actions {
@@ -337,8 +346,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* Product Showcase Cards */
 .product-showcase {
   position: relative;
-  width: 420px;
-  height: 520px;
+  width: 500px;
+  height: 620px;
 }
 .showcase-card {
   position: absolute;
@@ -349,19 +358,19 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   transition: transform 0.6s var(--ease-out);
 }
 .showcase-card--main {
-  width: 260px;
-  top: 0; left: 60px;
+  width: 300px;
+  top: 0; left: 50px;
   z-index: 3;
   animation: float-card 6s ease-in-out infinite;
 }
 .showcase-card--secondary {
-  width: 200px;
-  top: 80px; right: 0;
+  width: 235px;
+  top: 110px; right: 0;
   z-index: 2;
   animation: float-card 6s ease-in-out infinite 1.5s;
 }
 .showcase-card--tertiary {
-  width: 210px;
+  width: 245px;
   bottom: 0; left: 0;
   z-index: 2;
   animation: float-card 6s ease-in-out infinite 3s;
@@ -371,7 +380,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   50% { transform: translateY(-10px); }
 }
 .showcase-img {
-  height: 180px;
+  height: 240px;
   background-size: cover;
   background-position: center;
 }
