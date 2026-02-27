@@ -375,24 +375,18 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background-size: cover;
   background-position: center;
 }
-/* Lumora Summer Jacket */
-.showcase-img--1 {
-  background-image: url('images/lumora-jacket.jpg');
-  background-size: cover;
-  background-position: center top;
+/* Product card images */
+.showcase-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
-/* Vessa Satin Flow */
-.showcase-img--2 {
-  background-image: url('images/vessa-satin.jpg');
-  background-size: cover;
-  background-position: center top;
-}
-/* Midnight Curve */
-.showcase-img--3 {
-  background-image: url('images/midnight-curve.jpg');
-  background-size: cover;
-  background-position: center top;
-}
+/* Fallback tints if image fails to load */
+.showcase-img--1 { background: linear-gradient(160deg, #f2ece0 0%, #d9c9a8 100%); }
+.showcase-img--2 { background: linear-gradient(160deg, #c8935a 0%, #5a3010 100%); }
+.showcase-img--3 { background: linear-gradient(160deg, #2a1f1a 0%, #0d0906 100%); }
 .showcase-info {
   padding: 14px 16px;
   display: flex;
@@ -688,9 +682,17 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 /* Old Money Under $50 */
 .cat-bg--oldmoney {
-  background-image: url('images/old-money.jpg');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(160deg, #ede5d8 0%, #c8b490 40%, #8a6e48 100%);
+}
+/* img inside any cat-bg fills the container */
+.cat-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 /* Soft Luxe — dusty mauve/blush (VESSA satin, MAELLE drape vibes) */
 .cat-bg--softluxe {
