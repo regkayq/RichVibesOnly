@@ -161,9 +161,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .nav__logo {
   font-family: var(--font-brand);
-  font-size: 1.35rem;
+  font-size: 1.75rem;
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   color: var(--white);
   flex-shrink: 0;
   transition: color 0.3s;
@@ -375,41 +375,23 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background-size: cover;
   background-position: center;
 }
-/* Lumora Summer Jacket — warm cream/sand outdoor */
+/* Lumora Summer Jacket */
 .showcase-img--1 {
-  background: linear-gradient(160deg, #f2ece0 0%, #d9c9a8 45%, #b8a07a 100%);
+  background-image: url('images/lumora-jacket.jpg');
+  background-size: cover;
+  background-position: center top;
 }
-.showcase-img--1::after {
-  content: '';
-  display: block;
-  height: 100%;
-  background:
-    radial-gradient(ellipse 60% 80% at 50% 30%, rgba(255,255,255,0.35) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(242,236,224,0.2) 0%, rgba(184,160,122,0.4) 100%);
-}
-/* Vessa Satin Flow Dress — warm amber/caramel */
+/* Vessa Satin Flow */
 .showcase-img--2 {
-  background: linear-gradient(160deg, #c8935a 0%, #9b6030 45%, #5a3010 100%);
+  background-image: url('images/vessa-satin.jpg');
+  background-size: cover;
+  background-position: center top;
 }
-.showcase-img--2::after {
-  content: '';
-  display: block;
-  height: 100%;
-  background:
-    radial-gradient(ellipse 50% 70% at 40% 20%, rgba(233,200,140,0.4) 0%, transparent 55%),
-    linear-gradient(180deg, transparent 40%, rgba(30,15,5,0.35) 100%);
-}
-/* Noire Club Midnight Curve Dress — deep dark with bronze sheen */
+/* Midnight Curve */
 .showcase-img--3 {
-  background: linear-gradient(160deg, #2a1f1a 0%, #1a120e 50%, #0d0906 100%);
-}
-.showcase-img--3::after {
-  content: '';
-  display: block;
-  height: 100%;
-  background:
-    radial-gradient(ellipse 55% 60% at 55% 35%, rgba(185,130,70,0.3) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 40% at 20% 70%, rgba(162,46,81,0.15) 0%, transparent 50%);
+  background-image: url('images/midnight-curve.jpg');
+  background-size: cover;
+  background-position: center top;
 }
 .showcase-info {
   padding: 14px 16px;
@@ -704,9 +686,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background-position: center;
   transition: transform 0.6s var(--ease-out);
 }
-/* Old Money — ivory/cream/warm sand (LUMORA jacket, Ivory Blazer vibes) */
+/* Old Money Under $50 */
 .cat-bg--oldmoney {
-  background: linear-gradient(160deg, #ede5d8 0%, #c8b490 40%, #8a6e48 100%);
+  background-image: url('images/old-money.jpg');
+  background-size: cover;
+  background-position: center;
 }
 /* Soft Luxe — dusty mauve/blush (VESSA satin, MAELLE drape vibes) */
 .cat-bg--softluxe {
