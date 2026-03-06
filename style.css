@@ -608,10 +608,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border-radius: var(--radius-lg);
   background: var(--off-white);
   position: relative;
-  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+  will-change: transform, opacity;
+  transition: translate 0.3s var(--ease-out), box-shadow 0.3s;
 }
 .step:hover {
-  transform: translateY(-6px);
+  translate: 0 -6px;
   box-shadow: var(--shadow-md);
 }
 .step__num {
@@ -841,10 +842,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   flex-direction: column;
   gap: 16px;
   border: 1px solid var(--border);
-  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+  will-change: transform, opacity;
+  transition: translate 0.3s var(--ease-out), box-shadow 0.3s;
 }
 .review-card:hover {
-  transform: translateY(-4px);
+  translate: 0 -4px;
   box-shadow: var(--shadow-md);
 }
 .review-card--featured {

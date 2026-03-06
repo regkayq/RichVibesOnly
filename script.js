@@ -31,9 +31,7 @@ document.addEventListener('click', (e) => {
 });
 
 // ----- INTERSECTION OBSERVER — FADE UP -----
-const fadeEls = document.querySelectorAll(
-  '.step, .cat-card, .review-card, .stat'
-);
+const fadeEls = document.querySelectorAll('.stat');
 
 fadeEls.forEach(el => el.classList.add('fade-up'));
 
@@ -99,6 +97,55 @@ form.addEventListener('submit', (e) => {
   window.addEventListener('scroll', update, { passive: true });
   update(); // set initial state
 }());
+
+// ----- SCROLL-DRIVEN FLY — reusable for any section -----
+function createSectionFly(sectionEl, itemConfigs) {
+  if (!sectionEl) return;
+
+  function update() {
+    const rect = sectionEl.getBoundingClientRect();
+    const vh   = window.innerHeight;
+    // raw: +1 = section fully below fold, 0 = centered in viewport, -1 = fully above
+    const raw    = (rect.top + rect.height / 2 - vh / 2) / (vh * 0.72);
+    const clamped = Math.max(-1, Math.min(1, raw));
+    // easeIn² so cards rest smoothly at center, accelerate out
+    const p = clamped >= 0 ? clamped * clamped : -(clamped * clamped);
+
+    itemConfigs.forEach(({ el, tx, ty, rot }) => {
+      if (!el) return;
+      el.style.transform = `translate(${tx * p}px, ${ty * p}px) rotate(${rot * p}deg)`;
+      el.style.opacity   = String(Math.max(0, 1 - Math.abs(p) * 1.4));
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+// How It Works — We Curate / We Authenticate / You Save
+const steps = document.querySelectorAll('.step');
+createSectionFly(document.querySelector('.how'), [
+  { el: steps[0], tx: -90, ty:  110, rot: -18 },
+  { el: steps[1], tx:   0, ty:  140, rot:   0 },
+  { el: steps[2], tx:  90, ty:  110, rot:  18 },
+]);
+
+// Find Your Vibe — category cards
+const catCards = document.querySelectorAll('.cat-card');
+createSectionFly(document.querySelector('.categories'), [
+  { el: catCards[0], tx: -110, ty:  90, rot: -14 },
+  { el: catCards[1], tx:   70, ty: 130, rot:  20 },
+  { el: catCards[2], tx:  130, ty:  70, rot: -16 },
+]);
+
+// The Community Speaks — review cards
+const reviewCards = document.querySelectorAll('.review-card');
+createSectionFly(document.querySelector('.testimonials'), [
+  { el: reviewCards[0], tx: -100, ty: 100, rot: -12 },
+  { el: reviewCards[1], tx:  110, ty:  80, rot:  16 },
+  { el: reviewCards[2], tx:   90, ty: 120, rot: -15 },
+  { el: reviewCards[3], tx:  -70, ty: 140, rot:  18 },
+]);
 
 // ----- PARALLAX — subtle hero background -----
 const heroBg = document.querySelector('.hero__bg');
