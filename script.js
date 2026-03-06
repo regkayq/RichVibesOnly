@@ -69,6 +69,37 @@ form.addEventListener('submit', (e) => {
     </div>`;
 });
 
+// ----- SCROLL-DRIVEN CARD FLY (leaves effect) -----
+(function initCardScrollFly() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  // Each card gets a unique flight path (tx, ty in px, rot in deg)
+  const cards = [
+    { el: document.querySelector('.showcase-card--main'),      tx:  200, ty: -260, rot:  32 },
+    { el: document.querySelector('.showcase-card--secondary'), tx:  260, ty:  -60, rot: -24 },
+    { el: document.querySelector('.showcase-card--tertiary'),  tx: -200, ty:  180, rot:  28 },
+  ].filter(c => c.el);
+
+  // easeIn so the initial scroll feels natural, acceleration towards exit
+  function easeIn(t) { return t * t * t; }
+
+  function update() {
+    const heroH = hero.offsetHeight;
+    // Animation window: from scrollY=0 to scrollY = heroH*0.55
+    const raw = Math.max(0, Math.min(1, window.scrollY / (heroH * 0.55)));
+    const p   = easeIn(raw);
+
+    cards.forEach(({ el, tx, ty, rot }) => {
+      el.style.transform = `translate(${tx * p}px, ${ty * p}px) rotate(${rot * p}deg)`;
+      el.style.opacity   = String(1 - p);
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update(); // set initial state
+}());
+
 // ----- PARALLAX — subtle hero background -----
 const heroBg = document.querySelector('.hero__bg');
 if (heroBg) {
