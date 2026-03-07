@@ -640,12 +640,18 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   position: absolute;
   top: 48px;   /* mirrors card padding-top — same as icon's top edge */
   right: 40px; /* mirrors card padding-right — same gap as icon on left */
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--gray);
-  line-height: 52px; /* vertically centers number over the 52px icon height */
   pointer-events: none;
 }
 .step__icon {
@@ -909,10 +915,10 @@ blockquote {
   flex-shrink: 0;
   background-size: cover;
 }
-.review-avatar--1 { background: linear-gradient(135deg, #c8956c, #8b4513); }
-.review-avatar--2 { background: linear-gradient(135deg, #4a6fa5, #1a2f50); }
-.review-avatar--3 { background: linear-gradient(135deg, #c9a0dc, #7b3f9e); }
-.review-avatar--4 { background: linear-gradient(135deg, #68b36b, #2d5e30); }
+.review-avatar--1 { background-image: url('https://i.pravatar.cc/88?img=47'); background-size: cover; background-position: center; }
+.review-avatar--2 { background-image: url('https://i.pravatar.cc/88?img=11'); background-size: cover; background-position: center; }
+.review-avatar--3 { background-image: url('https://i.pravatar.cc/88?img=56'); background-size: cover; background-position: center; }
+.review-avatar--4 { background-image: url('https://i.pravatar.cc/88?img=33'); background-size: cover; background-position: center; }
 .review-author strong {
   display: block;
   font-size: 0.875rem;
