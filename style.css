@@ -638,12 +638,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .step__num {
   position: absolute;
-  top: -16px; left: 40px;
+  top: 48px;   /* mirrors card padding-top — same as icon's top edge */
+  right: 40px; /* mirrors card padding-right — same gap as icon on left */
   font-family: var(--font-sans);
-  font-size: 3.5rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(0,0,0,0.06);
-  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+  line-height: 52px; /* vertically centers number over the 52px icon height */
   pointer-events: none;
 }
 .step__icon {
