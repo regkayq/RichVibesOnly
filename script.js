@@ -67,15 +67,18 @@ form.addEventListener('submit', (e) => {
     </div>`;
 });
 
-// ----- HERO CARDS — scroll-driven exit (scale toward camera + blur) -----
+// ----- HERO CARDS + BADGES — scroll-driven exit -----
 (function initHeroFly() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
 
-  const cards = [
-    { el: document.querySelector('.showcase-card--main'),      tx:  200, ty: -260, rot:  32 },
-    { el: document.querySelector('.showcase-card--secondary'), tx:  260, ty:  -60, rot: -24 },
-    { el: document.querySelector('.showcase-card--tertiary'),  tx: -200, ty:  180, rot:  28 },
+  // Cards and badges all fly — badges follow the cards nearest to them
+  const items = [
+    { el: document.querySelector('.showcase-card--main'),      tx:  200, ty: -260, rot:  32, scale: true },
+    { el: document.querySelector('.showcase-card--secondary'), tx:  260, ty:  -60, rot: -24, scale: true },
+    { el: document.querySelector('.showcase-card--tertiary'),  tx: -200, ty:  180, rot:  28, scale: true },
+    { el: document.querySelector('.float-badge--1'),           tx:  240, ty: -180, rot:  18, scale: false },
+    { el: document.querySelector('.float-badge--2'),           tx: -170, ty:  150, rot: -14, scale: false },
   ].filter(c => c.el);
 
   function easeIn(t) { return t * t * t; }
@@ -83,15 +86,34 @@ form.addEventListener('submit', (e) => {
   function update() {
     const raw = Math.max(0, Math.min(1, window.scrollY / (hero.offsetHeight * 0.55)));
     const p   = easeIn(raw);
-    cards.forEach(({ el, tx, ty, rot }) => {
-      el.style.transform = `translate(${tx * p}px, ${ty * p}px) scale(${1 + 0.12 * p}) rotate(${rot * p}deg)`;
+    items.forEach(({ el, tx, ty, rot, scale }) => {
+      const sc = scale ? `scale(${1 + 0.12 * p}) ` : '';
+      el.style.transform = `translate(${tx * p}px, ${ty * p}px) ${sc}rotate(${rot * p}deg)`;
       el.style.opacity   = String(Math.max(0, 1 - p * 1.1));
-      el.style.filter    = p > 0.45 ? `blur(${(p - 0.45) * 10}px)` : 'none';
+      el.style.filter    = (scale && p > 0.45) ? `blur(${(p - 0.45) * 10}px)` : 'none';
     });
   }
 
   window.addEventListener('scroll', update, { passive: true });
   update();
+}());
+
+// ----- HOW IT WORKS — step spotlight loop -----
+(function initStepSpotlight() {
+  const steps = Array.from(document.querySelectorAll('.step'));
+  if (steps.length < 2) return;
+
+  let current = 0;
+
+  function advance() {
+    steps[current].classList.remove('step--spotlight');
+    current = (current + 1) % steps.length;
+    steps[current].classList.add('step--spotlight');
+  }
+
+  // Start on first step immediately
+  steps[current].classList.add('step--spotlight');
+  setInterval(advance, 2400);
 }());
 
 // ----- SECTION REVEAL — 3D stagger enter / blur-collapse exit -----
