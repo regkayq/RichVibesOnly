@@ -596,6 +596,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: var(--white);
 }
 .steps {
+  perspective: 1400px;
   display: flex;
   align-items: center;
   gap: 0;
@@ -668,6 +669,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: var(--off-white);
 }
 .cat-grid {
+  perspective: 1400px;
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr;
   grid-template-rows: 420px;
@@ -678,6 +680,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
+  will-change: transform, opacity, filter;
 }
 .cat-card:hover .cat-bg { transform: scale(1.05); }
 .cat-card:hover .cat-link { color: var(--gold); letter-spacing: 0.06em; }
@@ -829,6 +832,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: var(--white);
 }
 .reviews-grid {
+  perspective: 1400px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;

@@ -67,85 +67,82 @@ form.addEventListener('submit', (e) => {
     </div>`;
 });
 
-// ----- SCROLL-DRIVEN CARD FLY (leaves effect) -----
-(function initCardScrollFly() {
+// ----- HERO CARDS — scroll-driven exit (scale toward camera + blur) -----
+(function initHeroFly() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
 
-  // Each card gets a unique flight path (tx, ty in px, rot in deg)
   const cards = [
     { el: document.querySelector('.showcase-card--main'),      tx:  200, ty: -260, rot:  32 },
     { el: document.querySelector('.showcase-card--secondary'), tx:  260, ty:  -60, rot: -24 },
     { el: document.querySelector('.showcase-card--tertiary'),  tx: -200, ty:  180, rot:  28 },
   ].filter(c => c.el);
 
-  // easeIn so the initial scroll feels natural, acceleration towards exit
   function easeIn(t) { return t * t * t; }
 
   function update() {
-    const heroH = hero.offsetHeight;
-    // Animation window: from scrollY=0 to scrollY = heroH*0.55
-    const raw = Math.max(0, Math.min(1, window.scrollY / (heroH * 0.55)));
+    const raw = Math.max(0, Math.min(1, window.scrollY / (hero.offsetHeight * 0.55)));
     const p   = easeIn(raw);
-
     cards.forEach(({ el, tx, ty, rot }) => {
-      el.style.transform = `translate(${tx * p}px, ${ty * p}px) rotate(${rot * p}deg)`;
-      el.style.opacity   = String(1 - p);
-    });
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update(); // set initial state
-}());
-
-// ----- SCROLL-DRIVEN FLY — reusable for any section -----
-function createSectionFly(sectionEl, itemConfigs) {
-  if (!sectionEl) return;
-
-  function update() {
-    const rect = sectionEl.getBoundingClientRect();
-    const vh   = window.innerHeight;
-    // raw: +1 = section fully below fold, 0 = centered in viewport, -1 = fully above
-    const raw    = (rect.top + rect.height / 2 - vh / 2) / (vh * 0.72);
-    const clamped = Math.max(-1, Math.min(1, raw));
-    // easeIn² so cards rest smoothly at center, accelerate out
-    const p = clamped >= 0 ? clamped * clamped : -(clamped * clamped);
-
-    itemConfigs.forEach(({ el, tx, ty, rot }) => {
-      if (!el) return;
-      el.style.transform = `translate(${tx * p}px, ${ty * p}px) rotate(${rot * p}deg)`;
-      el.style.opacity   = String(Math.max(0, 1 - Math.abs(p) * 1.4));
+      el.style.transform = `translate(${tx * p}px, ${ty * p}px) scale(${1 + 0.12 * p}) rotate(${rot * p}deg)`;
+      el.style.opacity   = String(Math.max(0, 1 - p * 1.1));
+      el.style.filter    = p > 0.45 ? `blur(${(p - 0.45) * 10}px)` : 'none';
     });
   }
 
   window.addEventListener('scroll', update, { passive: true });
   update();
-}
+}());
 
-// How It Works — We Curate / We Authenticate / You Save
-const steps = document.querySelectorAll('.step');
-createSectionFly(document.querySelector('.how'), [
-  { el: steps[0], tx: -90, ty:  110, rot: -18 },
-  { el: steps[1], tx:   0, ty:  140, rot:   0 },
-  { el: steps[2], tx:  90, ty:  110, rot:  18 },
-]);
+// ----- SECTION REVEAL — 3D stagger enter / blur-collapse exit -----
+(function initSectionReveal() {
+  const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
+  const easeInQuart  = t => t * t * t * t;
+  const STAGGER      = 0.24; // fraction of scroll range dedicated to stagger
 
-// Find Your Vibe — category cards
-const catCards = document.querySelectorAll('.cat-card');
-createSectionFly(document.querySelector('.categories'), [
-  { el: catCards[0], tx: -110, ty:  90, rot: -14 },
-  { el: catCards[1], tx:   70, ty: 130, rot:  20 },
-  { el: catCards[2], tx:  130, ty:  70, rot: -16 },
-]);
+  function createReveal(sectionEl, itemEls) {
+    if (!sectionEl || !itemEls.length) return;
+    const n = itemEls.length;
 
-// The Community Speaks — review cards
-const reviewCards = document.querySelectorAll('.review-card');
-createSectionFly(document.querySelector('.testimonials'), [
-  { el: reviewCards[0], tx: -100, ty: 100, rot: -12 },
-  { el: reviewCards[1], tx:  110, ty:  80, rot:  16 },
-  { el: reviewCards[2], tx:   90, ty: 120, rot: -15 },
-  { el: reviewCards[3], tx:  -70, ty: 140, rot:  18 },
-]);
+    function update() {
+      const rect = sectionEl.getBoundingClientRect();
+      const vh   = window.innerHeight;
+      const sH   = sectionEl.offsetHeight;
+
+      // enterRaw: 1 = section fully below fold, 0 = section top at mid-viewport
+      const enterRaw = Math.max(0, Math.min(1, rect.top / (vh * 0.65)));
+      // exitRaw:  0 = section in view, 1 = section has scrolled above fold
+      const exitRaw  = Math.max(0, Math.min(1, -rect.top / (sH * 0.65)));
+
+      itemEls.forEach((el, i) => {
+        if (!el) return;
+        const sf = n > 1 ? i / (n - 1) : 0; // stagger fraction 0…1
+
+        if (exitRaw > 0) {
+          // EXIT — first card leads, compress upward with blur
+          const ep = easeInQuart(Math.max(0, Math.min(1, exitRaw - sf * 0.12)));
+          el.style.transform = `translateY(${-48 * ep}px) scale(${1 - 0.07 * ep}) rotateX(${-5 * ep}deg)`;
+          el.style.opacity   = String(Math.max(0, 1 - ep * 1.7));
+          el.style.filter    = ep > 0.3 ? `blur(${(ep - 0.3) * 5}px)` : 'none';
+        } else {
+          // ENTER — rise from below with 3D forward tilt, staggered
+          const rawVis = (1 - enterRaw) - sf * STAGGER;
+          const ep     = easeOutQuart(Math.max(0, Math.min(1, rawVis / (1 - STAGGER))));
+          el.style.transform = `translateY(${72 * (1 - ep)}px) scale(${0.88 + 0.12 * ep}) rotateX(${15 * (1 - ep)}deg)`;
+          el.style.opacity   = String(Math.min(1, ep * 1.35));
+          el.style.filter    = 'none';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  createReveal(document.querySelector('.how'),          Array.from(document.querySelectorAll('.step')));
+  createReveal(document.querySelector('.categories'),   Array.from(document.querySelectorAll('.cat-card')));
+  createReveal(document.querySelector('.testimonials'), Array.from(document.querySelectorAll('.review-card')));
+}());
 
 // ----- PARALLAX — subtle hero background -----
 const heroBg = document.querySelector('.hero__bg');
