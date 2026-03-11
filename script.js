@@ -67,30 +67,35 @@ form.addEventListener('submit', (e) => {
     </div>`;
 });
 
-// ----- HERO CARDS + BADGES — scroll-driven exit -----
+// ----- HERO CARDS — scroll-driven cascade fall -----
 (function initHeroFly() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
 
-  // Cards and badges all fly — badges follow the cards nearest to them
+  // All cards fall downward — staggered so secondary goes first, then main, then tertiary.
+  // The slight horizontal drift + rotation makes each card feel unique.
   const items = [
-    { el: document.querySelector('.showcase-card--main'),      tx:  200, ty: -260, rot:  32, scale: true },
-    { el: document.querySelector('.showcase-card--secondary'), tx:  260, ty:  -60, rot: -24, scale: true },
-    { el: document.querySelector('.showcase-card--tertiary'),  tx: -200, ty:  180, rot:  28, scale: true },
-    { el: document.querySelector('.float-badge--1'),           tx:  240, ty: -180, rot:  18, scale: false },
-    { el: document.querySelector('.float-badge--2'),           tx: -170, ty:  150, rot: -14, scale: false },
+    { el: document.querySelector('.showcase-card--secondary'), tx:  55, ty: 600, rot:  13, delay: 0    },
+    { el: document.querySelector('.float-badge--2'),           tx: -30, ty: 460, rot: -18, delay: 0.06 },
+    { el: document.querySelector('.showcase-card--main'),      tx: -25, ty: 520, rot:  -9, delay: 0.14 },
+    { el: document.querySelector('.showcase-card--tertiary'),  tx: -50, ty: 480, rot:   8, delay: 0.24 },
+    { el: document.querySelector('.float-badge--1'),           tx:  40, ty: 400, rot:  20, delay: 0.09 },
   ].filter(c => c.el);
 
+  // Cubic ease-in — starts slow like gravity, then accelerates
   function easeIn(t) { return t * t * t; }
 
   function update() {
-    const raw = Math.max(0, Math.min(1, window.scrollY / (hero.offsetHeight * 0.55)));
-    const p   = easeIn(raw);
-    items.forEach(({ el, tx, ty, rot, scale }) => {
-      const sc = scale ? `scale(${1 + 0.12 * p}) ` : '';
-      el.style.transform = `translate(${tx * p}px, ${ty * p}px) ${sc}rotate(${rot * p}deg)`;
-      el.style.opacity   = String(Math.max(0, 1 - p * 1.1));
-      el.style.filter    = (scale && p > 0.45) ? `blur(${(p - 0.45) * 10}px)` : 'none';
+    const scrollFrac = Math.max(0, Math.min(1, window.scrollY / (hero.offsetHeight * 0.60)));
+
+    items.forEach(({ el, tx, ty, rot, delay }) => {
+      // Each card starts its fall after its personal delay threshold
+      const local = Math.max(0, Math.min(1, (scrollFrac - delay) / (1 - delay)));
+      const p     = easeIn(local);
+
+      el.style.transform = `translate(${tx * p}px, ${ty * p}px) rotate(${rot * p}deg) scale(${1 - 0.06 * p})`;
+      el.style.opacity   = String(Math.max(0, 1 - p * 1.3));
+      el.style.filter    = p > 0.5 ? `blur(${(p - 0.5) * 10}px)` : 'none';
     });
   }
 
