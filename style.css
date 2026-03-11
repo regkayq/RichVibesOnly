@@ -244,11 +244,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
    ============================================================ */
 .hero {
   position: relative;
+  z-index: 1;           /* stacks above .stats-bar so falling cards overlay it */
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  overflow: clip;
+  overflow: visible;    /* cards can fall past hero bottom into stats bar */
   background: #091409;
 }
 .hero__bg {
@@ -356,7 +357,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: var(--white);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), 0 32px 80px rgba(0,0,0,0.22);
   will-change: transform, opacity;
 }
 .showcase-card--main {
@@ -737,10 +738,13 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .cat-bg--softluxe {
   background: linear-gradient(160deg, #d4b8b0 0%, #a87868 50%, #6a3c30 100%);
 }
+.cat-bg--softluxe img { object-position: center top; }
+
 /* After Hours — deep dark with bronze/crimson (NOIRE CLUB vibes) */
 .cat-bg--afterhours {
   background: linear-gradient(160deg, #2a1818 0%, #4a2020 40%, #1a0c0c 100%);
 }
+.cat-bg--afterhours img { object-position: center 20%; }
 /* Pattern overlays for visual interest */
 .cat-bg--women::before,
 .cat-bg--men::before,
