@@ -14,7 +14,7 @@
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#" class="nav__logo">RichVibesOnly</a>
+      <a href="#" class="nav__logo" id="navLogo">RichVibesOnly</a>
       <ul class="nav__links">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#brands">Brands</a></li>
@@ -41,67 +41,19 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg">
+      <img src="images/hero-bg.jpg" alt="RichVibesOnly" id="heroBgImg" />
+    </div>
+    <div class="hero__overlay"></div>
+
+    <h1 class="hero__wordmark" id="heroWordmark">RichVibesOnly</h1>
+
     <div class="hero__content">
       <span class="hero__label">Curated luxury · Up to 90% off</span>
-      <h1 class="hero__brand">RichVibesOnly</h1>
       <p class="hero__tagline">Luxury Taste. <em>Real-World Budget.</em></p>
-      <p class="hero__sub">
-        Designer pieces from 200+ labels — authenticated, curated, and priced for real people.
-      </p>
       <div class="hero__actions">
         <a href="#waitlist" class="btn btn--gold">Start Shopping</a>
         <a href="#how" class="btn btn--outline">See How It Works</a>
-      </div>
-    </div>
-    <div class="hero__visual">
-      <div class="product-showcase">
-        <div class="showcase-card showcase-card--main">
-          <div class="showcase-img showcase-img--1">
-            <img src="images/lumora-jacket.jpg" alt="Lumora Summer Jacket" />
-          </div>
-          <div class="showcase-info">
-            <span class="showcase-brand">Lumora</span>
-            <span class="showcase-name">Summer Jacket</span>
-            <div class="showcase-price">
-              <span class="price-now">$42</span>
-              <span class="price-was">$129</span>
-              <span class="price-off">−67%</span>
-            </div>
-          </div>
-        </div>
-        <div class="showcase-card showcase-card--secondary">
-          <div class="showcase-img showcase-img--2">
-            <img src="images/vessa-satin.jpg" alt="Vessa Satin Flow" />
-          </div>
-          <div class="showcase-info">
-            <span class="showcase-brand">Vessa</span>
-            <span class="showcase-name">Satin Flow Dress</span>
-            <div class="showcase-price">
-              <span class="price-now">$38</span>
-              <span class="price-was">$149</span>
-              <span class="price-off">−74%</span>
-            </div>
-          </div>
-        </div>
-        <div class="showcase-card showcase-card--tertiary">
-          <div class="showcase-img showcase-img--3">
-            <img src="images/midnight-curve.jpg" alt="Midnight Curve Dress" />
-          </div>
-          <div class="showcase-info">
-            <span class="showcase-brand">Noire Club</span>
-            <span class="showcase-name">Midnight Curve Dress</span>
-            <div class="showcase-price">
-              <span class="price-now">$45</span>
-              <span class="price-was">$159</span>
-              <span class="price-off">−72%</span>
-            </div>
-          </div>
-        </div>
-        <div class="float-badge float-badge--2">
-          <svg width="13" height="13" fill="var(--gold)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <span class="badge-label">New Drop</span>
-        </div>
       </div>
     </div>
   </section>
@@ -130,6 +82,61 @@
       </div>
     </div>
   </div>
+
+  <!-- FRESH DROPS -->
+  <section class="fresh-drops" id="fresh-drops">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Just Dropped</span>
+        <h2 class="section-title">Fresh<br /><em>Finds</em></h2>
+        <p class="section-sub">Authenticated designer pieces at prices that feel too good to be true — because we work harder so you spend less.</p>
+      </div>
+      <div class="drops-grid">
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="images/lumora-jacket.jpg" alt="Lumora Summer Jacket" />
+            <span class="drop-badge">−67%</span>
+          </div>
+          <div class="drop-info">
+            <span class="drop-brand">Lumora</span>
+            <span class="drop-name">Summer Jacket</span>
+            <div class="drop-price">
+              <span class="price-now">$42</span>
+              <span class="price-was">$129</span>
+            </div>
+          </div>
+        </div>
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="images/vessa-satin.jpg" alt="Vessa Satin Flow" />
+            <span class="drop-badge">−74%</span>
+          </div>
+          <div class="drop-info">
+            <span class="drop-brand">Vessa</span>
+            <span class="drop-name">Satin Flow Dress</span>
+            <div class="drop-price">
+              <span class="price-now">$38</span>
+              <span class="price-was">$149</span>
+            </div>
+          </div>
+        </div>
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="images/midnight-curve.jpg" alt="Midnight Curve Dress" />
+            <span class="drop-badge">−72%</span>
+          </div>
+          <div class="drop-info">
+            <span class="drop-brand">Noire Club</span>
+            <span class="drop-name">Midnight Curve Dress</span>
+            <div class="drop-price">
+              <span class="price-now">$45</span>
+              <span class="price-was">$159</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- HOW IT WORKS -->
   <section class="how" id="how">
