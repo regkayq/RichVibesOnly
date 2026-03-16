@@ -6,7 +6,7 @@
   <title>RichVibesOnly — Luxury for Less</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Suranna&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,7 +14,7 @@
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#" class="nav__logo">RichVibesOnly</a>
+      <a href="#" class="nav__logo" id="navLogo">RichVibesOnly</a>
       <ul class="nav__links">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#brands">Brands</a></li>
@@ -41,87 +41,20 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg">
+      <img src="images/hero-bg.jpg" alt="RichVibesOnly" id="heroBgImg" />
+    </div>
+    <div class="hero__overlay"></div>
+
+    <h1 class="hero__wordmark" id="heroWordmark">RichVibesOnly</h1>
+
     <div class="hero__content">
-      <span class="hero__label">Design-first marketplace</span>
-      <h1 class="hero__title">
-        Luxury Taste.<br />
-        <em>Real-World Budget.</em>
-      </h1>
-      <p class="hero__sub">
-        Curated overstock and last-season pieces from the world's best labels —
-        at prices that actually make sense.
-      </p>
+      <span class="hero__label">Curated luxury · Up to 90% off</span>
+      <p class="hero__tagline">Luxury Taste. <em>Real-World Budget.</em></p>
       <div class="hero__actions">
         <a href="#waitlist" class="btn btn--gold">Start Shopping</a>
         <a href="#how" class="btn btn--outline">See How It Works</a>
       </div>
-      <div class="hero__trust">
-        <div class="trust-pill">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Authenticity Guaranteed
-        </div>
-        <div class="trust-pill">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Secure Payments
-        </div>
-        <div class="trust-pill">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/></svg>
-          Free Returns
-        </div>
-      </div>
-    </div>
-    <div class="hero__visual">
-      <div class="product-showcase">
-        <div class="showcase-card showcase-card--main">
-          <div class="showcase-img showcase-img--1"></div>
-          <div class="showcase-info">
-            <span class="showcase-brand">Bottega Veneta</span>
-            <span class="showcase-name">Intrecciato Leather Bag</span>
-            <div class="showcase-price">
-              <span class="price-now">$312</span>
-              <span class="price-was">$1,840</span>
-              <span class="price-off">−83%</span>
-            </div>
-          </div>
-        </div>
-        <div class="showcase-card showcase-card--secondary">
-          <div class="showcase-img showcase-img--2"></div>
-          <div class="showcase-info">
-            <span class="showcase-brand">Prada</span>
-            <span class="showcase-name">Re-Nylon Windbreaker</span>
-            <div class="showcase-price">
-              <span class="price-now">$189</span>
-              <span class="price-was">$1,290</span>
-              <span class="price-off">−85%</span>
-            </div>
-          </div>
-        </div>
-        <div class="showcase-card showcase-card--tertiary">
-          <div class="showcase-img showcase-img--3"></div>
-          <div class="showcase-info">
-            <span class="showcase-brand">Gucci</span>
-            <span class="showcase-name">GG Canvas Sneakers</span>
-            <div class="showcase-price">
-              <span class="price-now">$224</span>
-              <span class="price-was">$980</span>
-              <span class="price-off">−77%</span>
-            </div>
-          </div>
-        </div>
-        <div class="float-badge float-badge--1">
-          <span class="badge-num">12K+</span>
-          <span class="badge-label">Happy Shoppers</span>
-        </div>
-        <div class="float-badge float-badge--2">
-          <span class="badge-icon">✓</span>
-          <span class="badge-label">Just authenticated</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero__scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
     </div>
   </section>
 
@@ -149,6 +82,61 @@
       </div>
     </div>
   </div>
+
+  <!-- FRESH DROPS -->
+  <section class="fresh-drops" id="fresh-drops">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Just Dropped</span>
+        <h2 class="section-title">Fresh Finds</h2>
+        <p class="section-sub">Authenticated designer pieces at prices that feel too good to be true — because we work harder so you spend less.</p>
+      </div>
+      <div class="drops-grid">
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="images/lumora-jacket.jpg" alt="Lumora Summer Jacket" />
+          </div>
+          <div class="drop-info">
+            <span class="drop-brand">Lumora</span>
+            <span class="drop-name">Summer Jacket</span>
+            <div class="drop-price">
+              <span class="price-now">$42</span>
+              <span class="price-was">$129</span>
+              <span class="drop-badge">−67%</span>
+            </div>
+          </div>
+        </div>
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="images/vessa-satin.jpg" alt="Vessa Satin Flow" />
+          </div>
+          <div class="drop-info">
+            <span class="drop-brand">Vessa</span>
+            <span class="drop-name">Satin Flow Dress</span>
+            <div class="drop-price">
+              <span class="price-now">$38</span>
+              <span class="price-was">$149</span>
+              <span class="drop-badge">−74%</span>
+            </div>
+          </div>
+        </div>
+        <div class="drop-card">
+          <div class="drop-img">
+            <img src="images/midnight-curve.jpg" alt="Midnight Curve Dress" />
+          </div>
+          <div class="drop-info">
+            <span class="drop-brand">Noire Club</span>
+            <span class="drop-name">Midnight Curve Dress</span>
+            <div class="drop-price">
+              <span class="price-now">$45</span>
+              <span class="price-was">$159</span>
+              <span class="drop-badge">−72%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- HOW IT WORKS -->
   <section class="how" id="how">
@@ -198,32 +186,38 @@
       </div>
       <div class="cat-grid">
         <div class="cat-card cat-card--wide">
-          <div class="cat-bg cat-bg--women"></div>
+          <div class="cat-bg cat-bg--oldmoney">
+            <img src="images/old-money.jpg" alt="Old Money" />
+          </div>
           <div class="cat-overlay"></div>
           <div class="cat-content">
-            <span class="cat-tag">Women</span>
-            <h3>Her Edit</h3>
-            <p>Bags, RTW, Shoes & Accessories</p>
+            <span class="cat-tag">Under $50</span>
+            <h3>Old Money</h3>
+            <p>Ivory blazers, structured jackets & tailored trousers — starting at $34</p>
+            <a href="#waitlist" class="cat-link">Shop the Edit →</a>
+          </div>
+        </div>
+        <div class="cat-card">
+          <div class="cat-bg cat-bg--softluxe">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Flow & Drape" />
+          </div>
+          <div class="cat-overlay"></div>
+          <div class="cat-content">
+            <span class="cat-tag">Soft Luxe</span>
+            <h3>Flow & Drape</h3>
+            <p>Satin dresses & soft knits from $29</p>
             <a href="#waitlist" class="cat-link">Shop Now →</a>
           </div>
         </div>
         <div class="cat-card">
-          <div class="cat-bg cat-bg--men"></div>
-          <div class="cat-overlay"></div>
-          <div class="cat-content">
-            <span class="cat-tag">Men</span>
-            <h3>His Edit</h3>
-            <p>Tailoring, Sneakers & Bags</p>
-            <a href="#waitlist" class="cat-link">Shop Now →</a>
+          <div class="cat-bg cat-bg--afterhours">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80" alt="After Hours" />
           </div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-bg cat-bg--access"></div>
           <div class="cat-overlay"></div>
           <div class="cat-content">
-            <span class="cat-tag">Accessories</span>
-            <h3>The Extras</h3>
-            <p>Watches, Jewelry & Sunglasses</p>
+            <span class="cat-tag">Night Out</span>
+            <h3>After Hours</h3>
+            <p>Curve-hugging looks for less than $50</p>
             <a href="#waitlist" class="cat-link">Shop Now →</a>
           </div>
         </div>
@@ -329,7 +323,7 @@
   <section class="waitlist" id="waitlist">
     <div class="waitlist__inner">
       <span class="section-label" style="color: var(--gold)">Early Access</span>
-      <h2>Join the<br /><em>Inner Circle</em></h2>
+      <h2>Join the Inner Circle</h2>
       <p>Get first access to new drops, exclusive members-only pricing, and a $20 credit on your first order.</p>
       <form class="waitlist-form" id="waitlistForm">
         <input type="email" placeholder="your@email.com" required class="waitlist-input" />
