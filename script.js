@@ -89,7 +89,7 @@ form.addEventListener('submit', (e) => {
   if (steps.length < 2) return;
 
   const CELEBRATE_STEP = 2; // 0-indexed → step 3
-  const EMOJIS = ['🎉','✨','💫','🎊','🌟','🥂'];
+  const EMOJIS = ['🎉','✨','💫','🎊','🌟','🥂','🎈','⭐','🏆','💥'];
 
   function burstConfetti(stepEl) {
     EMOJIS.forEach((emoji, i) => {
@@ -97,10 +97,10 @@ form.addEventListener('submit', (e) => {
       el.className = 'confetti-burst';
       el.textContent = emoji;
       const angle = (i / EMOJIS.length) * 2 * Math.PI;
-      const dist = 55 + Math.random() * 35;
+      const dist = 90 + Math.random() * 60;
       el.style.setProperty('--tx', `${Math.round(Math.cos(angle) * dist)}px`);
       el.style.setProperty('--ty', `${Math.round(Math.sin(angle) * dist)}px`);
-      el.style.setProperty('--delay', `${i * 0.07}s`);
+      el.style.setProperty('--delay', `${i * 0.06}s`);
       stepEl.appendChild(el);
       el.addEventListener('animationend', () => el.remove(), { once: true });
     });
