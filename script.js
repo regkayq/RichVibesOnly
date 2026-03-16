@@ -88,11 +88,30 @@ form.addEventListener('submit', (e) => {
   const steps = Array.from(document.querySelectorAll('.step'));
   if (steps.length < 2) return;
 
+  const CELEBRATE_STEP = 2; // 0-indexed → step 3
+  const EMOJIS = ['🎉','✨','💫','🎊','🌟','🥂'];
+
+  function burstConfetti(stepEl) {
+    EMOJIS.forEach((emoji, i) => {
+      const el = document.createElement('span');
+      el.className = 'confetti-burst';
+      el.textContent = emoji;
+      const angle = (i / EMOJIS.length) * 2 * Math.PI;
+      const dist = 55 + Math.random() * 35;
+      el.style.setProperty('--tx', `${Math.round(Math.cos(angle) * dist)}px`);
+      el.style.setProperty('--ty', `${Math.round(Math.sin(angle) * dist)}px`);
+      el.style.setProperty('--delay', `${i * 0.07}s`);
+      stepEl.appendChild(el);
+      el.addEventListener('animationend', () => el.remove(), { once: true });
+    });
+  }
+
   let current = 0;
   function advance() {
     steps[current].classList.remove('step--spotlight');
     current = (current + 1) % steps.length;
     steps[current].classList.add('step--spotlight');
+    if (current === CELEBRATE_STEP) burstConfetti(steps[current]);
   }
 
   steps[current].classList.add('step--spotlight');
